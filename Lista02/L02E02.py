@@ -1,7 +1,7 @@
 #Funcionalidade: 2. Lê arquivo com string e converter em RNA.
 #Saida: Transcrição: RNA (substituiÇÃO de “T”s por “U”s. Exempllo: GAUGGAACUUGACUACGUAAAUU
-
-nome_arquivo = 'arquivo_L02E02_string_de_dna.txt'
+import os
+nome_arquivo = 'dados' + os.sep + 'arquivo_L02E02_string_de_dna.txt'
 rna = list()
 def main():
     global rna, nome_arquivo

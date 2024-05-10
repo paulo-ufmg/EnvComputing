@@ -1,20 +1,3 @@
-3. Feito
-
-4. (FIB) A sequência de Fibonacci pode ser utilizada para estimar a população de
-coelhos a partir de uma quantidade de meses. Considerando isso. faça um
-programa que leia um arquivo contendo dois inteiros (n e k) separados por espaço,
-onde n corresponde a quantidade de meses e k corresponde a quantidade de pares
-de filhotes de coelhos que cada casal (par) de coelhos adultos conseguem gerar por
-mês (ao invés de 1 par, como é normalmente na sequência de Fibonacci). Além
-disso, os coelhos filhotes demoram 1 mês para se tornarem adultos e capazes de se
-reproduzir. Sendo assim, o programa deve retornar o total de pares de coelhos
-depois de n meses, considerando inicialmente que existem 1 par de coelhos
-filhotes no primeiro mês [4].
-Exemplo entrada:
-5 3
-Saída:
-19
-
 
 
 5. (GC) O conteúdo GC de uma string de DNA é dado pela porcentagem de

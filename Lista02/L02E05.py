@@ -24,17 +24,106 @@ Rosalind_0808
 60.919540
 
 """
+import re
+class File_fasta:
+    
+    def __init__(self):
+       self.autor = 'Paulo Rocha'
+       self.ids = [] #Lista de id's das sequências referenciadas pelo index da lista
+       self.info ={} #Dicionario que armazena um comentario da sequência
+       self.nucleotideo = {"A":0,"C":0,"G":0,"T":0,"U":0} #nucleotideos presente na sequencia
+       self.nucleotideos = [] #Lista de aminoácido {"C":0,"G":0,"T":0,"U":0}
+    
+    def seq_existe (self,id):
+       return True if(id in self.ids) else False 
+    
+    def get_seqs(self):
+        return  self.ids
+    #erro verificar
+    def soma_nucleotideos(self,indice):
+        total = 0
+        for n in self.nucleotideos[indice]:
+            total += self.nucleotideos[indice][n]
+        return n    
 
-nome_arquivo = 'arquivo_L02E02_string_de_dna.txt'
-rna = list()
+    def new_seq(self,id):
+       if not(self.seq_existe(id)):
+          self.ids.append(id)
+          self.nucleotideos.append(self.nucleotideo)
+       else:
+          print("Sequencia já inserida!")   
+
+    def insert_comment(self,id,info):
+       if (self.seq_existe(id) and info is not None):
+            self.info[self.ids.index(id)] = info
+     
+    def add_aminoacido(self,id,tipo):
+        if(re.sub(r'[\t\n\r\f\v\b\0\a\s]', '',tipo)==""):
+            return 
+        if(self.seq_existe(id)): 
+            if("ACGTU".find(tipo) != -1):
+               self.nucleotideos[ self.ids.index(id) ][tipo] += 1
+            else:
+               print(f"Nucleotídeo não reconhecido!{tipo}")
+        else:
+            print(f"-Identificação de sequência não encontrada!{id}")
+                    
+    def get_seq(self,id):
+        if(self.seq_existe(id)):
+            indice = self.ids.index(id)
+            print("Informações da sequência:")
+            print("=========================")
+            print(f"Id: {self.ids[indice]}")
+            if(indice in self.info ):
+                print(f"Info: {self.info[indice]}")
+            #print(self.nucleotideos)   
+            print(f"Q(n): A({self.nucleotideos[indice]['A']}),C({self.nucleotideos[indice]['C']}),G({self.nucleotideos[indice]['G']}),T({self.nucleotideos[indice]['T']}),U({self.nucleotideos[indice]['U']})")
+            print(f"Total: {self.soma_nucleotideos[indice]}")
+            GC = (self.nucleotideos[indice]['G']+self.nucleotideos[indice]['C'])/self.soma_nucleotideos[indice]
+            print("GC: {:.2f}%".format(GC))
+       
+    def identifica_id(self,line):
+        match = re.match(r'^>(\S+)', line)
+        if match:
+            return match.group(1)
+        else:
+            return None
+
+    def identifica_info(self,line):
+        match = re.match(r'^>[\w\|]+ (.+)', line)
+        if match:
+            return match.group(1)
+        else:
+           return None
+
+  
+
+#===============================================================
+import os
+nome_arquivo = 'dados' + os.sep + 'arquivo_L02E05_file_fasta.txt'
+seq = File_fasta()
+id = ""
+
 def main():
-    global rna, nome_arquivo
+    global id,nome_arquivo
     with open (nome_arquivo) as arq:
         while True:
             line = arq.readline()
             if not line:
                 break
-            for i in [*line]:
-                rna += ["U"] if(i == 'T') else [i]
+            if line.strip()[0]==";":
+               continue
+            if(line.find('>') >= 0): #Identificado nova sequencia
+                id = seq.identifica_id(line)
+                seq.new_seq(id)
+                comment = seq.identifica_info(line)
+                seq.insert_comment(id,comment)
+            else:    #compilando a sequencia
+                for i in [*line]:
+                    seq.add_aminoacido(id,i)
 main()
-print(''.join(rna))
+for i in seq.get_seqs():
+    print(seq.get_seq(i))
+    #seq.get_seq[i]
+    print("=======================================")
+

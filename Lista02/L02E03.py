@@ -1,7 +1,7 @@
-#Funcionalidade: 3.(REVC) Busca o DNA em um arquivo e transcreve o DNA COMPLEMNTAR(cDNA) REVERSO. Exemplo: AAAACCCGGT
+#Funcionalidade: 3.(REVC) Busca o DNA em um arquivo e transcreve o DNA COMPLEMENTAR(cDNA) REVERSO. Exemplo: AAAACCCGGT
 #Saida: Transcrição: cDNA (substituiÇÃO de “A”<->"T" e "C"<->"G". Exempllo: ACCGGGTTTT
-
-nome_arquivo = 'arquivo_L02E03_string_de_dna.txt'
+import os,sys
+nome_arquivo = 'dados' + os.sep + 'arquivo_L02E03_string_de_dna.txt'
 revc = list()
 def main():
     global revc, nome_arquivo
@@ -12,7 +12,7 @@ def main():
             if not line: #interrompe o while se nenhuma linha for lida!
                 break
             for i in [*line][::-1]: #percorre a lista de string de forma reversa
-                match i:
+                match i:           #switch case necessita do python 3.10
                     case "A":
                         temp="T"
                     case "T":
