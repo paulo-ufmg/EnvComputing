@@ -44,7 +44,7 @@ class File_fasta:
         total = 0
         for n in self.nucleotideos[indice]:
             total += self.nucleotideos[indice][n]
-        return n    
+        return total    
 
     def new_seq(self,id):
        if not(self.seq_existe(id)):
@@ -68,7 +68,7 @@ class File_fasta:
         else:
             print(f"-Identificação de sequência não encontrada!{id}")
                     
-    def get_seq(self,id):
+    def get_info_seq(self,id):
         if(self.seq_existe(id)):
             indice = self.ids.index(id)
             print("Informações da sequência:")
@@ -78,9 +78,11 @@ class File_fasta:
                 print(f"Info: {self.info[indice]}")
             #print(self.nucleotideos)   
             print(f"Q(n): A({self.nucleotideos[indice]['A']}),C({self.nucleotideos[indice]['C']}),G({self.nucleotideos[indice]['G']}),T({self.nucleotideos[indice]['T']}),U({self.nucleotideos[indice]['U']})")
-            print(f"Total: {self.soma_nucleotideos[indice]}")
-            GC = (self.nucleotideos[indice]['G']+self.nucleotideos[indice]['C'])/self.soma_nucleotideos[indice]
-            print("GC: {:.2f}%".format(GC))
+            print(f"Total: {self.soma_nucleotideos(indice)}")
+            GC = (self.nucleotideos[indice]['G']+self.nucleotideos[indice]['C'])/self.soma_nucleotideos(indice)
+            print("GC: {:.2f} %".format(GC*100))
+            
+            
        
     def identifica_id(self,line):
         match = re.match(r'^>(\S+)', line)
@@ -122,8 +124,8 @@ def main():
                 for i in [*line]:
                     seq.add_aminoacido(id,i)
 main()
+print(seq.get_seqs())
 for i in seq.get_seqs():
-    print(seq.get_seq(i))
-    #seq.get_seq[i]
-    print("=======================================")
-
+    seq.get_info_seq(i)
+    print("-----------------------------")
+    
