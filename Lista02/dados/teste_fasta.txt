@@ -1,0 +1,6 @@
+>Rosalind_6404
+CTGA
+>Rosalind_5959
+ATCGG
+>Rosalind_0808
+AGGTGGAAT
