@@ -1,0 +1,74 @@
+
+11. Faça o programa que leia o resultado de alinhamento entre duas sequências
+com BLAST e retorne a identidade (em porcentagem). Dica: copie a tabela abaixo e
+cole em um arquivo chamado “resultado.txt”; leia o arquivo manualmente e
+identifique qual linha armazena o valor de identidade; depois crie um programa que
+leia e imprima na tela apenas esse valor.
+Query= sp|P52407|E13B_HEVBR Glucan endo-1,3-beta-glucosidase, basic
+vacuolar isoform OS=Hevea brasiliensis OX=3981 GN=HGN1 PE=1 SV=2
+Length=374
+Subject= sp|Q9SE50|BGL18_ARATH Beta-D-glucopyranosyl abscisate
+beta-glucosidase OS=Arabidopsis thaliana OX=3702 GN=BGLU18 PE=1 SV=2
+Length=528
+Score = 25.0 bits (53), Expect = 0.005, Method: Compositional matrix adjust.
+Identities = 26/126 (21%), Positives = 51/126 (40%), Gaps = 18/126 (14%)
+Query 233 FTSPSVVVWDGQR--GYK---NLFDATLDALYSALE------RASGGSLEVVVSESGWPS 281
++T+ S+V WD + GYK F+ LD L + + G EV+++E+G+
+Sbjct 368 WTTDSLVDWDSKSVDGYKIGSKPFNGKLDVYSKGLRYLLKYIKDNYGDPEVIIAENGYGE 427
+Query 282 AGA-------FAATFDNGRTYLSNLIQHVKGGTPKRPNRAIETYLFAMFDENKKQPEVEK 334
+F N + Y+ + + K +++++ D + Q +
+Sbjct 428 DLGEKHNDVNFGTQDHNRKYYIQRHLLSMHDAICKDKVNVTGYFVWSLMDNFEWQDGYKA 487
+Query 335 HFGLFF 340
+FGL++
+Sbjct 488 RFGLYY 493
+
+
+
+
+
+
+
+14. Faça um programa que leia um arquivo contendo várias linhas onde cada linha
+possui uma string a separada por espaço de uma string c, onde a é um aminoácido
+em um determinado formato (“nome”,”sigla”,”letra”) e c é o formato a ser
+convertido de a. O programa deve retornar todas as conversões de a para o formato
+c. Segue Tabela de aminoácidos.
+Exemplo entrada:
+ALA nome
+V sigla
+Tirosina letra
+Saída:
+Alanina
+Val
+Y
+
+
+15. Estruturas de proteínas podem ser representadas por arquivos. Esse arquivos
+recebem o formato PDB, provindo de Protein Data Bank. Dentro de arquivos PDBs
+podemos encontrar muitas informações sobre uma proteína, como método
+experimental utilizado, atributos do experimento, posições espaciais do átomos dos
+aminoácidos e solvente presente, etc. Apesar do Protein Data Bank prover o
+formato FASTA (estrutura primária) de uma proteína em sua base de dados, nem
+sempre elas são idênticas a sequência encontrada no arquivo PDB e por isso para
+garantirsequências de aminoácidos (FASTA) a partir do arquivo de estrutura (PDB) de uma
+proteína. Sendo assim, faça um programa que leia um arquivo PDB. O programa
+deve converter o arquivo PDB para o formato FASTA, onde cada identificar do
+arquivo FASTA contenha a sequência de aminoácidos de cada cadeia polipeptídica
+do arquivo PDB.
+Exemplo entrada:
+1A1M.pdb
+Saída:
+>1A1M_A
+GSHSMRYFYTAMSRPGRGEPRFIAVGYVDDTQFVRFDSDAASPRTEPRPPWIEQEGPEYWDRNTQIFKTNTQTYRENL
+RIALRYYNQSEAGSHIIQRMYGCDLGPDGRLLRGHDQSAYDGKDYIALNEDLSSWTAADTAAQITQRKWEAARVAEQL
+RAYLEGLCVEWLRRYLENGKETLQRADPPKTHVTHHPVSDHEATLRCWALGFYPAEITLTWQRDGEDQTQDTELVETR
+PAGDRTFQKWAAVVVPSGEEQRYTCHVQHEGLPKPLTLRWEPHH
+>1A1M_B
+IQRTPKIQVYSRHPAENGKSNFLNCYVSGFHPSDIEVDLLKNGERIEKVEHSDLSFSKDWSFYLLYYTEFTPTEKDEY
+ACRVNHVTLSQPKIVKWDRDM
+>1A1M_C
+TPYDINQML
+
+16. Escreva um programa que leia um arquivo PDB e salve a sequência em formato
+FASTA. Teste com o PDB 2LZM (https://www.rcsb.org/structure/2lzm). (Valor: 5
+pontos).

@@ -1,0 +1,3 @@
+Rosalind_10.fasta
+Rosalind_12.fasta
+Rosalind_15.fasta

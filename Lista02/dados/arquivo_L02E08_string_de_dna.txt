@@ -1,0 +1,6 @@
+>s [sequencia 1]
+GATATATGCATATACTT
+
+>p [sequencia 2]
+ATAT
+
