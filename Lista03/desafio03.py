@@ -79,6 +79,36 @@ print("==================================================================Done!")
 
 
 
+print("d)  ")
+print("-----------------------------------------------------")
+"""
+d) Identifique o gene que codifica a proteína SPIKE (pesquise a importância dessa proteína
+para vírus no ChatGPT ou em um buscador) e salve em um arquivo chamado
+“spike.fasta” dentro da pasta “saida”. Dica: esta proteína possui uma região de grande
+importância com cinco aminoácidos em sequência - o primeiro é uma glicina (G),
+seguida de dois aminoácidos com carga polar positivo (R, K ou H), seguido por um
+aminoácido polar negativo (D ou E) e, por fim, uma outra glicina (G).
+
+
+
+"""
+
+
+print("==================================================================Done!")
+print("e)  ")
+print("-----------------------------------------------------")
+"""
+e) Realize a modelagem da estrutura 3D da proteína (spike.fasta) usando ColabFold:
+https://colab.research.google.com/github/sokrypton/ColabFold/blob/main/AlphaFold2.
+ipynb (use os parâmetros padrão). Opcional: abra a estrutura em um programa de
+visualização de proteínas (como o PyMOL ou o ChimeraX). Por fim, crie um script que
+gera um mapa de distâncias e um mapa de contatos (ligações de hidrogênio) desta
+proteína (esse script não precisa estar conectado diretamente no seu pipeline). Salve os
+mapas no formato PNG ou PDF dentro da pasta “saida”.
+
+"""
+
+
 
 
 
