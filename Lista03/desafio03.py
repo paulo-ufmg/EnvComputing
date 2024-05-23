@@ -1,7 +1,7 @@
 from Bioclass import Bioprof
 import os
 import sys
-
+#chamada a esse progrma segue: python desafio03.py -i genoma.fasta
 arquivo = None if(len(sys.argv) < 3) else sys.argv[2]
 arg = None if(len(sys.argv) < 3 ) else sys.argv[1]
 
@@ -18,23 +18,23 @@ seq = Bioprof()
 seq.leiaArquivoFasta(arquivo)
 print(seq.get_seqs())
 
-orginal =  seq.get_seqs()[0] 
+genoma =  seq.get_seqs()[0] 
 
 #Solução exercício Letra a) do desafio03.py
 #-------------------------------------------
 print("a) Exibir o tamanho da sequência e o percentual de GC")
 print("-----------------------------------------------------")
-print("Tamanho sequencia.: ",seq.get_tamanho_sequencia(orginal))
-print("Percentual de GC..: {:.2f} %".format(seq.get_percentual_GC(orginal)))
+print("Tamanho sequencia.: ",seq.get_tamanho_sequencia(genoma))
+print("Percentual de GC..: {:.2f} %".format(seq.get_percentual_GC(genoma)))
 print("==================================================================Done!")
 
-print("b)Usando k=31 obtenha as sequências kmers, salve em arquivo e Responder:")
+print("b)Usando k=31 obtenha as sequências kmers, salve em arquivo e Responda:")
 print("------------------------------------------------------------------------")
 """Dividir a sequência com k = 31 usando janela desllizante. Salvar todas as sequencias resultantes no arquivo '.\saida\reads.fasta' identificando as sequencia por um número '>n' 
 Responder quantas sequências serão armazenadas nesse arquivo? Opcional: tente reconstruir o genoma original com base no arquivo “reads.fasta”.
 """
 k = 31
-k_mers = seq.get_kmers(orginal,k)
+k_mers = seq.get_kmers(genoma,k)
 #Criar um diretório <saida>, somente se o mesmo não existir
 path_dir = "." + os.sep + "saida"
 if not os.path.exists(path_dir): #ou if not os.path.isdir(path_dir):
@@ -53,13 +53,13 @@ assembly = Bioprof() #Objeto com os mers (partes do genoma)
 
 #importa todos os k-mers que forma o genoma para o novo objeto assembly
 assembly.leiaArquivoFasta(saida)
-seq.add_seq("Obtido","Genoma construido a partir dos kmers",assembly.get_assembly_kmers()) #adiciona a sequencia construida a partir do kmers
+seq.adiciona_seq("Obtido","Genoma construido a partir dos kmers",assembly.get_assembly_kmers()) #adiciona a sequencia construida a partir do kmers
 print("Comparando:")
-print("Tamanho Genoma original: ",seq.get_tamanho_sequencia(orginal))
+print("Tamanho Genoma genoma: ",seq.get_tamanho_sequencia(genoma))
 print("Tamanbo Genoma obtido..: ",seq.get_tamanho_sequencia("Obtido"))
-print("Composição Genoma orginal..:",seq.get_composicao_seq(orginal))
+print("Composição Genoma orginal..:",seq.get_composicao_seq(genoma))
 print("Composição Genoma obtido...:",seq.get_composicao_seq('Obtido'))
-print("Comparação identica: ", "Sucesso!" if seq.get_sequencia(orginal) == seq.get_sequencia("Obtido") else "Falha na construção do Genoma pelso k-mers!")
+print("Comparação identica: ", "Sucesso!" if seq.get_sequencia(genoma) == seq.get_sequencia("Obtido") else "Falha na construção do Genoma pelso k-mers!")
 #print("Sequencia Genoma:",seq.get_sequencia(orginal))
 #print("Sequencia obtida:",seq.get_sequencia('Obtido'))
 print("==================================================================Done!")
@@ -68,12 +68,12 @@ print("c) CDS - ")
 print("-----------------------------------------------------")
 """
 c) Identifique todas as regiões codificantes (CDS) deste genoma. Considere que a região
-codificante começa com uma metionina e termina com um stop códon; considere as seis
-janelas de codificação (não há problema seu programa retornar falsos-positivos). Salve
+codificante começa com uma metionina (AUG) e termina com um stop códon[ UAA','UAG','UGA']; 
+considere as seis janelas de codificação (não há problema seu programa retornar falsos-positivos). Salve
 cada possível CDS em um arquivo no formato FASTA (os arquivos devem ser salvos
 em uma pasta chamada “cds”).
 """
-
+seq.busca_cds(genoma,'ATG')
 
 print("==================================================================Done!")
 

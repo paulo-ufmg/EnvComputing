@@ -1,5 +1,6 @@
 # Ignorar diretórios __pycache__
-__pycache__/
+__pycache__
+Lista03/__pycache__
 
 # Ignorar arquivos de configuração do ambiente virtual
 .env/
